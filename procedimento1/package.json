@@ -1,0 +1,15 @@
+{
+  "name": "procedimento1",
+  "version": "1.0.0",
+  "description": "Trabalho referente ao nível 2 do mundo 2 feito em typescript (1º procedimento)",
+  "main": "dist/ordenando.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/ordenando.js"
+  },
+  "author": "Filipe Alvim",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
+}
