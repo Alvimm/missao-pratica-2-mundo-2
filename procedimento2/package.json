@@ -1,0 +1,15 @@
+{
+  "name": "procedimento2",
+  "version": "1.0.0",
+  "description": "Trabalho referente ao nível 2 do mundo 2 feito em typescript (2º procedimento)",
+  "main": "dist/receitas.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/receitas.js"
+  },
+  "author": "Filipe Alvim",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
+}
