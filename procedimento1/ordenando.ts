@@ -106,7 +106,7 @@ function misturar() {
     .map(item => parseInt(item.innerHTML))
     .filter(numero => !isNaN(numero));
 
-  shuffle(numeros, numeros.length - 1);
+  shuffle(numeros, numeros.length);
 
   lista.innerHTML = numeros.map(numero => `<li>${numero}</li>`).join('');
 } 
