@@ -1,3 +1,9 @@
+interface Receita {
+  titulo: string;
+  imagem: string;
+  preparo: string;
+  ingredientes: string[];
+}
 
 let receita: Receita[] = [
   {
@@ -44,53 +50,10 @@ let receita: Receita[] = [
   },
 ];
 
-
-interface Receita {
-    titulo: string;
-    imagem: string;
-    preparo: string;
-    ingredientes: string[];
-  }
-// let receita: Receita[] = dados
-
-// const getListaIngredientes = (receita: Receita) => {
-//   let lista: any = [];
-//   let ul = '<ul>';
-//   lista += receita.ingredientes
-//     .map((ingrediente: string) => `<li>${ingrediente}</li>`)
-//     .reduce((prev: any, curr: any) => prev + curr, '');
-//   ul += '</ul>';
-//   return lista;
-// };
-
-// const getCard = (receita: Receita) => {
-//   const listaIngredientes = getListaIngredientes(receita);
-//   return `
-//         <div class='card' style='width: 250px'>
-//             <img src='${receita.imagem}' class='card-img-top' alt='${receita.titulo}'>
-//             <div class='card-body'>
-//                 <h2 class='card-title'>${receita.titulo}</h2>
-//                 <div class='card-text'>
-//                 <ul>${listaIngredientes}</ul>
-//                 <hr>
-//                 <p>${receita.preparo}</p>
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// };
-
-
-// const preencheCatalogo = () => {
-//   const pnlCatalogo: any = document.getElementById('pnlCatalogo');
-//   const html = receita.map(getCard).reduce((acc, curr) => acc + curr, '');
-//   pnlCatalogo.innerHTML = html;
-// };
-
   const getListaIngredientes = (receita: Receita): string => {
     const lista: string = receita.ingredientes
       .map((ingrediente: string) => `<li>${ingrediente}</li>`)
-      .join('');
+      .reduce((accumulator: string, currentValue: string) => accumulator + currentValue, '');
     return `<ul>${lista}</ul>`;
   };
   
@@ -112,10 +75,7 @@ interface Receita {
   };
   
   const preencheCatalogo = (): void => {
-    const pnlCatalogo: HTMLElement | null = document.getElementById('pnlCatalogo');
-    if (pnlCatalogo) {
-      const html: string = receita.map(getCard).join('');
-      pnlCatalogo.innerHTML = html;
-    }
+    const pnlCatalogo: HTMLElement | any = document.getElementById('pnlCatalogo');
+    pnlCatalogo.innerHTML = receita.map(getCard).reduce((accumulator: string, currentValue: string) => accumulator + currentValue, '')
   };
   
