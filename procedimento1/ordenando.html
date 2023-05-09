@@ -21,9 +21,9 @@
         name=""
         id="valor"
         min="0"
-        class="form-control mb-4 "
+        class="form-control mb-4"
       />
-      <button onclick="add()" class="btn btn-primary  mb-2">Adicionar</button>
+      <button onclick="add()" class="btn btn-primary mb-2">Adicionar</button>
       <hr />
       <select name="select" id="selecao" class="form-select mb-4">
         <option value="BubbleSort" selected>Bubble Sort</option>
@@ -31,9 +31,65 @@
         <option value="QuickSort">Quick Sort</option>
       </select>
       <button onclick="ordenar()" class="btn btn-primary mb-2">Ordenar</button>
-      <button onclick="misturar()" class="btn btn-primary  mb-2">Misturar</button>
+      <button onclick="misturar()" class="btn btn-primary mb-2">
+        Misturar
+      </button>
       <hr />
       <ul id="valores" class="mt-4"></ul>
     </div>
+
+    <script>
+      function add() {
+        let valorDigitado = document.getElementById('valor');
+        const listaValores = document.getElementById('valores');
+        const node = document.createElement('li');
+        node.textContent = valorDigitado.value;
+        if (parseInt(valorDigitado.value) >= 0) {
+          listaValores.appendChild(node);
+        }
+        valorDigitado.value = ''; // Zerei o input após a chamada da função para melhorar a interação
+      }
+      function ordenar() {
+        const listaValores = document.getElementById('valores');
+        const listaSelecao = document.getElementById('selecao');
+        const valores = Array.from(listaValores.children).map((item) =>
+          eval(item.innerHTML)
+        );
+
+        const algoritmo =
+          listaSelecao.options[listaSelecao.selectedIndex].value;
+        switch (algoritmo) {
+          case 'BubbleSort':
+            bubble_sort(valores);
+            break;
+          case 'SelectionSort':
+            selection_sort(valores);
+            break;
+          case 'QuickSort':
+            quick_sort(valores, 0, valores.length - 1);
+            break;
+          default:
+            break;
+        }
+
+        const novoConteudo = valores
+          .map((valor) => `<li>${valor}</li>`)
+          .reduce((acumulador, item) => acumulador + item, '');
+        listaValores.innerHTML = novoConteudo;
+      }
+
+      function misturar() {
+        const listaValores = document.getElementById('valores');
+        const vetorNumeros = Array.from(listaValores.children).map((item) =>
+          eval(item.innerHTML)
+        );
+
+        shuffle(vetorNumeros, vetorNumeros.length);
+
+        listaValores.innerHTML = vetorNumeros
+          .map((numero) => `<li>${numero}</li>`)
+          .reduce((acumulador, item) => acumulador + item, '');
+      }
+    </script>
   </body>
 </html>
