@@ -50,16 +50,21 @@ let receita: Receita[] = [
   },
 ];
 
-  const getListaIngredientes = (receita: Receita): string => {
-    const lista: string = receita.ingredientes
-      .map((ingrediente: string) => `<li>${ingrediente}</li>`)
-      .reduce((accumulator: string, currentValue: string) => accumulator + currentValue, '');
-    return `<ul>${lista}</ul>`;
-  };
-  
-  const getCard = (receita: Receita): string => {
-    const listaIngredientes: string = getListaIngredientes(receita);
-    return `
+const getListaIngredientes = (receita: Receita): string => {
+  let texto: string = '<ul>'
+  texto += receita.ingredientes
+    .map((ingrediente: string) => `<li>${ingrediente}</li>`)
+    .reduce(
+      (accumulator: string, currentValue: string) => accumulator + currentValue,
+      ''
+    );
+  texto += '</ul>'
+  return texto;
+};
+
+const getCard = (receita: Receita): string => {
+  const listaIngredientes: string = getListaIngredientes(receita);
+  return `
       <div class="card" style="width: 250px">
         <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
         <div class="card-body">
@@ -72,10 +77,14 @@ let receita: Receita[] = [
         </div>
       </div>
     `;
-  };
-  
-  const preencheCatalogo = (): void => {
-    const pnlCatalogo: HTMLElement | any = document.getElementById('pnlCatalogo');
-    pnlCatalogo.innerHTML = receita.map(getCard).reduce((accumulator: string, currentValue: string) => accumulator + currentValue, '')
-  };
-  
+};
+
+const preencheCatalogo = (): void => {
+  const pnlCatalogo: HTMLElement | any = document.getElementById('pnlCatalogo');
+  pnlCatalogo.innerHTML = receita
+    .map(getCard)
+    .reduce(
+      (accumulator: string, currentValue: string) => accumulator + currentValue,
+      ''
+    );
+};
