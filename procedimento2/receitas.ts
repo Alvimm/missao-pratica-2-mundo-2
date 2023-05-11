@@ -7,65 +7,66 @@ interface Receita {
 
 let receita: Receita[] = [
   {
-    titulo: 'Pudim de Sorvete',
+    titulo: 'Lasanha de carne',
     imagem:
-      'https://img.itdg.com.br/tdg/images/recipes/000/000/727/358399/358399_original.jpg?mode=crop&width=710&height=400',
+      'https://static.itdg.com.br/images/640-420/e6aad16dfa0581de2d2f1d35f5aa7833/324587-original.jpg',
     preparo:
-      'Em uma panela, coloque o leite condensado, o leite e as gemas. Leve ao fogo. Quando esfriar, acrescente o creme de leite. Bata as claras com o açúcar, na batedeira. Acrescente esse suspiro no creme reservado. Coloque em forma para pudim untada. Leve ao freezer por 6 horas.',
+      'Cozinhe a carne moída com temperos a gosto, faça um molho de tomate e monte as camadas de massa, carne e queijo, terminando com molho e queijo ralado. Leve ao forno por 30 minutos.',
     ingredientes: [
-      'Leite condensado',
-      'Leite',
-      'Ovos',
-      'Creme de leite',
-      'Açúcar',
+      '500g de carne moída',
+      '1 pacote de massa para lasanha',
+      '1 lata de molho de tomate',
+      '300g de queijo mussarela ralado',
     ],
   },
   {
-    titulo: 'Mexidinho',
+    titulo: 'Risoto de camarão',
     imagem:
-      'https://img.itdg.com.br/tdg/images/recipes/000/318/379/366167/366167_original.jpg',
+      'https://static.itdg.com.br/images/640-420/ff9dd9b72ecb6939ca3eaed852c45574/80890-original.jpg',
     preparo:
-      'Em uma panela adicione o azeite, as linguiças fatiadas e a cebola em tiras e refogue. Adicione o pimentão em tiras, o alho e tempere com cominho em pó. Em seguida adicione o arroz e o feijão cozidos, mexa delicadamente. Finalize com o ovo frito e o coentro.',
+      'Refogue cebola e alho em uma panela com manteiga, adicione o arroz arbóreo e frite por alguns minutos. Acrescente o vinho branco e deixe evaporar. Adicione caldo de legumes aos poucos e mexa sempre até o arroz ficar cozido. No final, adicione o camarão já cozido e tempere a gosto.',
     ingredientes: [
-      'Linguiças finas',
-      'Cebola, alho e cominho',
-      'Arroz cozido e coentro',
-      'Feijão vermelho',
-      'Ovo frito e azeite',
+      '500g de camarão',
+      '1 xícara de arroz arbóreo',
+      '1 cebola picada',
+      '2 dentes de alho picados',
+      '1/2 xícara de vinho branco',
+      '1,5 litro de caldo de legumes',
     ],
   },
   {
-    titulo: 'Yakisoba',
+    titulo: 'Bolo de cenoura',
     imagem:
-      'https://img.itdg.com.br/tdg/images/recipes/000/076/053/324834/324834_original.jpg?mode=crop&width=710&height=400',
+      'https://static.itdg.com.br/images/640-420/d290bc79bcad112ee9095604e45eb262/365326-original.jpg',
     preparo:
-      'Cozinhe o macarrão. Em uma panela grande, coloque o óleo e refogue a cebola. Acrescente a carne, o brócolis, a couve-flor, a cenoura, o champignon e tempere com shoyu. Cozinhe os legumes até ficarem em ponto al dente. Adicione o macarrão e misture bem.',
+      'Bata no liquidificador a cenoura, os ovos e o óleo. Em uma tigela, misture a farinha de trigo, o açúcar e o fermento. Adicione a mistura do liquidificador e misture bem. Despeje em uma forma untada e enfarinhada e leve ao forno por cerca de 40 minutos.',
     ingredientes: [
-      'Macarrão',
-      'Molho shoyo',
-      'Couve-flor e brócolis',
-      'Champignon e cenoura',
-      'Tirinhas de carne',
+      '3 cenouras médias',
+      '3 ovos',
+      '1 xícara de óleo',
+      '2 xícaras de açúcar',
+      '2 xícaras de farinha de trigo',
+      '1 colher de sopa de fermento em pó',
     ],
   },
 ];
 
 const getListaIngredientes = (receita: Receita): string => {
-  let texto: string = '<ul>'
+  let texto: string = '<ul>';
   texto += receita.ingredientes
     .map((ingrediente: string) => `<li>${ingrediente}</li>`)
     .reduce(
       (accumulator: string, currentValue: string) => accumulator + currentValue,
       ''
     );
-  texto += '</ul>'
+  texto += '</ul>';
   return texto;
 };
 
 const getCard = (receita: Receita): string => {
   const listaIngredientes: string = getListaIngredientes(receita);
   return `
-      <div class="card" style="width: 250px">
+      <div class="card bg-info-subtle" style="width: 250px">
         <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
         <div class="card-body">
           <h2 class="card-title">${receita.titulo}</h2>
