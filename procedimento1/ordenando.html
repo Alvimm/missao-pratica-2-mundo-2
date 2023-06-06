@@ -14,8 +14,13 @@
     />
   </head>
   <body>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+      *{font-family: 'Roboto Mono', monospace;}
+    </style>
     <div class="container mt-5 mb-4 col-sm-5 col-form-label">
-      <label for="valor1" class="form-label mb-4 fs-2 fw-bold">Valor</label>
+      <h1 class="display-3 text-center mb-5 fw-semibold">Ordenando valores</h1>
+      <label for="valor1" class="form-label mb-4 fs-2 fw-medium">Valor</label>
       <input
         type="number"
         name=""
@@ -23,19 +28,19 @@
         min="0"
         class="form-control mb-4"
       />
-      <button onclick="add()" class="btn btn-primary mb-2">Adicionar</button>
+      <button onclick="add()" class="btn btn-success mb-2 fw-medium">Adicionar</button>
       <hr />
-      <select name="select" id="selecao" class="form-select mb-4">
-        <option value="BubbleSort" selected>Bubble Sort</option>
-        <option value="SelectionSort">Selection Sort</option>
-        <option value="QuickSort">Quick Sort</option>
+      <select name="select" id="selecao" class="form-select mb-4 fw-medium">
+        <option class="fw-medium" value="BubbleSort" selected>Bubble Sort</option>
+        <option class="fw-medium" value="SelectionSort">Selection Sort</option>
+        <option class="fw-medium" value="QuickSort">Quick Sort</option>
       </select>
-      <button onclick="ordenar()" class="btn btn-primary mb-2">Ordenar</button>
-      <button onclick="misturar()" class="btn btn-primary mb-2">
-        Misturar
-      </button>
+      <div class="btn-group mb-2" role="group" aria-label="Basic mixed styles example">
+        <button onclick="ordenar()" class="btn btn-primary fw-medium">Ordenar</button>
+        <button onclick="misturar()" class="btn btn-warning fw-medium"> Misturar</button>
+      </div>
       <hr />
-      <ul id="valores" class="mt-4"></ul>
+      <ul id="valores" class="mt-4 list-group" ></ul>
     </div>
 
     <script>
@@ -43,6 +48,7 @@
         let valorDigitado = document.getElementById('valor');
         const listaValores = document.getElementById('valores');
         const node = document.createElement('li');
+        node.classList.add("display-6", "list-group-item", "fw-medium")
         node.textContent = valorDigitado.value;
         if (parseInt(valorDigitado.value) >= 0) {
           listaValores.appendChild(node);
@@ -73,7 +79,7 @@
         }
 
         const novoConteudo = valores
-          .map((valor) => `<li>${valor}</li>`)
+          .map((valor) => `<li class="display-6 list-group-item fw-medium">${valor}</li>`)
           .reduce((acumulador, item) => acumulador + item, '');
         listaValores.innerHTML = novoConteudo;
       }
@@ -87,7 +93,7 @@
         shuffle(vetorNumeros, vetorNumeros.length);
 
         listaValores.innerHTML = vetorNumeros
-          .map((numero) => `<li>${numero}</li>`)
+          .map((numero) => `<li class="display-6 list-group-item fw-medium">${numero}</li>`)
           .reduce((acumulador, item) => acumulador + item, '');
       }
     </script>
