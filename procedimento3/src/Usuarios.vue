@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 interface User {
   id: number;
@@ -12,7 +12,7 @@ interface User {
 export default defineComponent({
   data() {
     return {
-      users: [] as User[]
+      users: [] as User[],
     };
   },
   mounted() {
@@ -27,22 +27,33 @@ export default defineComponent({
       } catch (error) {
         console.error(error);
       }
-    }
-  }
+    },
+  },
 });
 </script>
 
 <template>
   <div class="row">
-      <div class="col-3 p-2 m-3" v-for="(user, index) in users" :key="index">
-        <div class="card" >
-          <img :src="user.avatar" alt="Avatar do usuário" class="card-img-top">
-          <div class="card-body">
-            <h1 class="card-title">{{ user.first_name }} {{ user.last_name }}</h1>
-            <p class="card-text">{{ user.email }}</p>
+    <div class="col-3 p-2" v-for="(user, index) in users" :key="index">
+      <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              :src="user.avatar"
+              alt="Avatar do usuário"
+              class="img-fluid rounded-start test"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ user.first_name }} {{ user.last_name }}
+              </h5>
+              <p class="card-text">{{ user.email }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
-
