@@ -26,10 +26,8 @@ let receita: Receita[] = [
     preparo:
       'Refogue cebola e alho em uma panela com manteiga, adicione o arroz arbóreo e frite por alguns minutos. Acrescente o vinho branco e deixe evaporar. Adicione caldo de legumes aos poucos e mexa sempre até o arroz ficar cozido. No final, adicione o camarão já cozido e tempere a gosto.',
     ingredientes: [
-      '500g de camarão',
-      '1 xícara de arroz arbóreo',
-      '1 cebola picada',
-      '2 dentes de alho picados',
+      '500g de camarão e 1 xícara de arroz arbóreo',
+      '1 cebola e 2 dentes de alho picados',
       '1/2 xícara de vinho branco',
       '1,5 litro de caldo de legumes',
     ],
@@ -41,11 +39,9 @@ let receita: Receita[] = [
     preparo:
       'Bata no liquidificador a cenoura, os ovos e o óleo. Em uma tigela, misture a farinha de trigo, o açúcar e o fermento. Adicione a mistura do liquidificador e misture bem. Despeje em uma forma untada e enfarinhada e leve ao forno por cerca de 40 minutos.',
     ingredientes: [
-      '3 cenouras médias',
-      '3 ovos',
+      '3 cenouras médias e 3 ovos',
       '1 xícara de óleo',
-      '2 xícaras de açúcar',
-      '2 xícaras de farinha de trigo',
+      '2 xícaras de açúcar e 2 de farinha de trigo',
       '1 colher de sopa de fermento em pó',
     ],
   },
@@ -66,7 +62,7 @@ const getListaIngredientes = (receita: Receita): string => {
 const getCard = (receita: Receita): string => {
   const listaIngredientes: string = getListaIngredientes(receita);
   return `
-      <div class="card bg-info-subtle" style="width: 250px">
+      <div class="card bg-info-subtle" style="width: 300px">
         <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
         <div class="card-body">
           <h2 class="card-title">${receita.titulo}</h2>
