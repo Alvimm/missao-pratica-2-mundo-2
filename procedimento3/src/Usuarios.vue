@@ -34,8 +34,8 @@ export default defineComponent({
 
 <template>
   <div class="row">
-    <div class="col-3 p-2" v-for="(user, index) in users" :key="index">
-      <div class="card mb-3" style="max-width: 540px">
+    <div class="col-4 p-2" v-for="(user, index) in users" :key="index">
+      <div class="card mb-3" >
         <div class="row g-0">
           <div class="col-md-4">
             <img
