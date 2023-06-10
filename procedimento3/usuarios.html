@@ -19,10 +19,6 @@
     * {
       font-family: 'Josefin Sans', sans-serif;
     }
-
-    .test {
-      height: 100%;
-    }
   </style>
   <body id="app" class="container bg-dark">
     <h1 class="display-2 sw-semibold px-2 m-3 text-light text-center">
@@ -36,13 +32,13 @@
     <div id="usuarios" class="container-fluid">
       <div class="row">
         <div class="col-4 p-2" v-for="(user, index) in users" :key="index">
-          <div class="card mb-3">
+           <div class="card mb-3"> <!--######### Coloquei o card de forma horizontal para uma melhor apresentação de acordo com a imagem carregada da API  #############-->
             <div class="row g-0">
               <div class="col-md-4">
                 <img
                   :src="user.avatar"
                   alt="Avatar do usuário"
-                  class="img-fluid rounded-start test"
+                  class="img-fluid rounded-start"
                 />
               </div>
               <div class="col-md-8">
